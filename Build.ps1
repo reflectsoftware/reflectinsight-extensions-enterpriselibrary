@@ -3,7 +3,7 @@ param(
     [String] $patch = "0",         # $env:APPVEYOR_BUILD_VERSION
     [String] $customLogger = "",   # C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll
     [Switch] $notouch,
-    [String] $project = "ReflectSoftware.Insight.Extensions.SemanticLogging"
+    [String] $project = "ReflectSoftware.Insight.Extensions.EnterpriseLibrary"
 )
 
 function Set-AssemblyVersions($informational, $assembly)
@@ -51,7 +51,9 @@ function Invoke-NuGetPack($version)
 
 function Invoke-Build($project, $majorMinor, $patch, $customLogger, $notouch)
 {
-    $solution = "$project 4.5.sln" 
+    $solution2 = "$project 2.0.sln" 
+    $solution4 = "$project 4.0.sln" 
+    $solution45 = "$project 4.5.sln" 
 	
     $package="$majorMinor.$patch"
 
@@ -65,8 +67,14 @@ function Invoke-Build($project, $majorMinor, $patch, $customLogger, $notouch)
         Set-AssemblyVersions $package $assembly
     }
 
-    Install-NuGetPackages $solution  
-    Invoke-MSBuild $solution $customLogger
+    Install-NuGetPackages $solution45    
+    Invoke-MSBuild $solution45 $customLogger
+	
+	Install-NuGetPackages $solution4    
+    Invoke-MSBuild $solution4 $customLogger
+	
+	Install-NuGetPackages $solution2    
+    Invoke-MSBuild $solution2 $customLogger
 
     Invoke-NuGetPack $package
 }
