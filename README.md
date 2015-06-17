@@ -20,7 +20,56 @@ One of the nice benefits of using the Enterprise Library extension is that if yo
 
 ## Getting Started
 
-Coming soon...
+
+```powershell
+Install-Package ReflectSoftware.Insight.Extensions.EnterpriseLibrary
+```
+
+Then in your app.config or web.config file, add the following configuration sections:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <configSections>
+    <section name="enterpriseLibrary.ConfigurationSource" type="Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ConfigurationSourceSection, Microsoft.Practices.EnterpriseLibrary.Common" requirePermission="true" />    
+    <section name="insightSettings" type="ReflectSoftware.Insight.ConfigurationHandler,ReflectSoftware.Insight" />
+  </configSections>
+
+  <enterpriseLibrary.ConfigurationSource selectedSource="External Source">
+    <sources>
+      <add name="External Source" type="Microsoft.Practices.EnterpriseLibrary.Common.Configuration.FileConfigurationSource, Microsoft.Practices.EnterpriseLibrary.Common" filePath="EntLib.config" />
+    </sources>
+  </enterpriseLibrary.ConfigurationSource>
+
+  <insightSettings>
+    <baseSettings>
+      <configChange enabled="true" />
+      <propagateException enabled="false" />
+      <exceptionEventTracker time="20" />
+      <debugMessageProcess enabled="true" />
+    </baseSettings>
+
+    <listenerGroups active="Debug">
+      <group name="Debug" enabled="true" maskIdentities="false">
+        <destinations>
+          <destination name="Viewer" enabled="true" filter="" details="Viewer" />
+        </destinations>
+      </group>
+    </listenerGroups>
+
+    <!-- Log Manager -->
+    <logManager>
+      <instance name="EntLibInstance" category="EntLib" bkColor="" />
+    </logManager>
+  </insightSettings>
+    
+  <startup>
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" />
+  </startup>
+</configuration>
+```
+
+Additional configuration details for the ReflectSoftware.Insight.Extensions.EnterpriseLibrary logging extension can be found [here](https://reflectsoftware.atlassian.net/wiki/display/RI5/Logging+Application+Block+Extension).
 
 ## Additional Resources
 
