@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Solution Items", "_Solution Items", "{5083DB16-D99D-48E4-8B72-90F9AFD54F7C}"
 	ProjectSection(SolutionItems) = preProject
@@ -12,6 +12,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Solution Items", "_Solutio
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReflectSoftware.Insight.Extensions.EnterpriseLibrary 4.5", "src\ReflectSoftware.Insight.Extensions.EnterpriseLibrary 4.5.csproj", "{A4AC3FD1-3A3B-48C8-8300-EA52A7569E93}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5D9E14A1-2551-47DB-BA28-73BE0B6CAB12}"
+	ProjectSection(SolutionItems) = preProject
+		src\ReflectSoftware.Insight.Extensions.EnterpriseLibrary.nuspec = src\ReflectSoftware.Insight.Extensions.EnterpriseLibrary.nuspec
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,5 +31,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5D9E14A1-2551-47DB-BA28-73BE0B6CAB12} = {5083DB16-D99D-48E4-8B72-90F9AFD54F7C}
 	EndGlobalSection
 EndGlobal
